@@ -6,6 +6,106 @@
     <title>Muhammad Shafy Khan | CS Student & Cybersecurity Learner</title>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
+        @media (max-width: 1024px) {
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+            .hero-text .subtitle {
+                font-size: 1.3rem;
+            }
+            .cta-buttons {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            .terminal-body {
+                font-size: 0.9rem;
+                padding: 1.5rem;
+            }
+            .hero-content {
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav .container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                gap: 1rem;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-text .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .terminal-window {
+                width: 100%;
+            }
+
+            .cta-buttons {
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 1.8rem;
+            }
+            .hero-text .subtitle {
+                font-size: 1rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .section-subtitle {
+                font-size: 0.9rem;
+            }
+            .projects-grid,
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .logo {
+                font-size: 0.9rem;
+            }
+            .nav-links a {
+                font-size: 0.85rem;
+            }
+            .terminal-body {
+                font-size: 0.85rem;
+                padding: 1rem;
+            }
+            .terminal-cursor {
+                width: 6px;
+                height: 14px;
+            }
+        }
+
+        /* Ensure images scale properly */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
         :root {
             --bg-primary: #0a0e17;
             --bg-secondary: #111827;
