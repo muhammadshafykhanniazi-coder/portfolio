@@ -24,6 +24,10 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'JetBrains Mono', monospace;
             background: var(--bg-primary);
@@ -65,14 +69,8 @@
             background: rgba(10, 14, 23, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border-color);
-            padding: 1rem 1.5rem;
+            padding: 1rem 2rem;
             z-index: 1000;
-            animation: slideDown 0.6s ease-out;
-        }
-
-        @keyframes slideDown {
-            from { transform: translateY(-100%); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
         }
 
         nav .container {
@@ -81,39 +79,44 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
         }
 
         .logo {
             font-family: 'Syne', sans-serif;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 800;
             color: var(--accent-primary);
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+            z-index: 1001;
         }
 
-        /* Mobile Menu Toggle */
         .menu-toggle {
             display: none;
-            background: none;
+            background: transparent;
             border: 2px solid var(--accent-primary);
             color: var(--accent-primary);
             font-size: 1.5rem;
             cursor: pointer;
-            padding: 0.5rem;
+            padding: 0.4rem 0.6rem;
             border-radius: 8px;
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             align-items: center;
             justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        .menu-toggle:hover {
+            background: rgba(0, 255, 136, 0.1);
+            transform: scale(1.05);
         }
 
         .nav-links {
             display: flex;
-            gap: 1.5rem;
+            gap: 2rem;
             list-style: none;
             align-items: center;
         }
@@ -149,89 +152,73 @@
             color: var(--accent-primary);
         }
 
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 5rem 1.5rem 2rem;
-        }
-
+        /* Sections */
         .container {
             max-width: 1400px;
             margin: 0 auto;
             width: 100%;
+            padding: 0 2rem;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 0 4rem;
         }
 
         .hero-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            gap: 4rem;
             align-items: center;
         }
 
         .hero-text h1 {
             font-family: 'Syne', sans-serif;
-            font-size: clamp(2rem, 5vw, 4rem);
+            font-size: 4rem;
             font-weight: 800;
             margin-bottom: 1rem;
             line-height: 1.1;
-            animation: fadeInUp 0.8s ease-out 0.2s both;
         }
 
-        .hero-text h1 .gradient-text {
+        .gradient-text {
             background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .hero-text .subtitle {
-            font-size: clamp(1rem, 2vw, 1.5rem);
+        .subtitle {
+            font-size: 1.5rem;
             color: var(--text-secondary);
             margin-bottom: 1.5rem;
-            font-weight: 400;
-            animation: fadeInUp 0.8s ease-out 0.4s both;
         }
 
         .hero-text p {
-            font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+            font-size: 1.1rem;
             color: var(--text-secondary);
             margin-bottom: 2rem;
             line-height: 1.8;
-            animation: fadeInUp 0.8s ease-out 0.6s both;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .cta-buttons {
             display: flex;
             gap: 1rem;
-            animation: fadeInUp 0.8s ease-out 0.8s both;
             flex-wrap: wrap;
         }
 
         .btn {
-            padding: 0.9rem 1.8rem;
+            padding: 1rem 2rem;
             border: none;
             border-radius: 8px;
             font-family: 'JetBrains Mono', monospace;
             font-weight: 600;
-            font-size: clamp(0.9rem, 1.5vw, 1rem);
+            font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
-            text-align: center;
         }
 
         .btn-primary {
@@ -257,19 +244,18 @@
             transform: translateY(-2px);
         }
 
-        /* Terminal Window */
+        /* Terminal */
         .terminal-window {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 12px;
             overflow: hidden;
             box-shadow: var(--shadow);
-            animation: fadeInUp 0.8s ease-out 0.4s both;
         }
 
         .terminal-header {
             background: rgba(0, 255, 136, 0.1);
-            padding: 0.8rem 1rem;
+            padding: 1rem;
             border-bottom: 1px solid var(--border-color);
             display: flex;
             align-items: center;
@@ -292,27 +278,12 @@
         .dot.green { background: #27c93f; }
 
         .terminal-body {
-            padding: 1.5rem;
-            font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+            padding: 2rem;
+            font-size: 0.95rem;
         }
 
         .terminal-line {
-            margin-bottom: 0.8rem;
-            opacity: 0;
-            animation: terminalType 0.5s ease-out forwards;
-            word-break: break-word;
-        }
-
-        .terminal-line:nth-child(1) { animation-delay: 1s; }
-        .terminal-line:nth-child(2) { animation-delay: 1.3s; }
-        .terminal-line:nth-child(3) { animation-delay: 1.6s; }
-        .terminal-line:nth-child(4) { animation-delay: 1.9s; }
-        .terminal-line:nth-child(5) { animation-delay: 2.2s; }
-        .terminal-line:nth-child(6) { animation-delay: 2.5s; }
-        .terminal-line:nth-child(7) { animation-delay: 2.8s; }
-
-        @keyframes terminalType {
-            to { opacity: 1; }
+            margin-bottom: 1rem;
         }
 
         .terminal-prompt {
@@ -337,15 +308,22 @@
             51%, 100% { opacity: 0; }
         }
 
-        /* About Section */
+        /* Other sections */
+        .about, .projects, .certifications, .contact {
+            padding: 6rem 0;
+        }
+
         .about {
-            padding: 4rem 1.5rem;
+            background: var(--bg-secondary);
+        }
+
+        .certifications {
             background: var(--bg-secondary);
         }
 
         .section-title {
             font-family: 'Syne', sans-serif;
-            font-size: clamp(2rem, 4vw, 3rem);
+            font-size: 3rem;
             font-weight: 800;
             margin-bottom: 1rem;
             text-align: center;
@@ -354,48 +332,45 @@
         .section-subtitle {
             text-align: center;
             color: var(--text-secondary);
-            margin-bottom: 3rem;
-            font-size: clamp(1rem, 2vw, 1.2rem);
+            margin-bottom: 4rem;
+            font-size: 1.2rem;
         }
 
-        .skills-grid {
+        .skills-grid, .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
 
-        .skill-card {
+        .skill-card, .project-card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 1.5rem;
+            padding: 2rem;
             transition: all 0.3s ease;
-            cursor: pointer;
         }
 
-        .skill-card:hover {
+        .skill-card:hover, .project-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 20px 40px rgba(0, 255, 136, 0.2);
             border-color: var(--accent-primary);
         }
 
         .skill-icon {
-            font-size: clamp(2rem, 4vw, 3rem);
+            font-size: 3rem;
             margin-bottom: 1rem;
         }
 
-        .skill-card h3 {
+        .skill-card h3, .project-card h3 {
             font-family: 'Syne', sans-serif;
-            font-size: clamp(1.2rem, 2vw, 1.5rem);
+            font-size: 1.5rem;
             margin-bottom: 1rem;
             color: var(--accent-primary);
         }
 
-        .skill-card p {
+        .skill-card p, .project-description {
             color: var(--text-secondary);
             line-height: 1.8;
-            font-size: clamp(0.9rem, 1.5vw, 1rem);
         }
 
         .skill-tags {
@@ -410,70 +385,20 @@
             color: var(--accent-primary);
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
-            font-size: clamp(0.75rem, 1.5vw, 0.85rem);
+            font-size: 0.85rem;
             border: 1px solid rgba(0, 255, 136, 0.2);
-        }
-
-        /* Projects Section */
-        .projects {
-            padding: 4rem 1.5rem;
-        }
-
-        /* Certifications Section */
-        .certifications {
-            padding: 4rem 1.5rem;
-            background: var(--bg-secondary);
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
-            gap: 1.5rem;
-        }
-
-        .project-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.2);
         }
 
         .project-header {
             background: linear-gradient(135deg, rgba(0, 255, 136, 0.2), rgba(0, 212, 255, 0.2));
-            padding: 1.5rem;
+            padding: 2rem;
             text-align: center;
-            min-height: 140px;
+            min-height: 120px;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        .project-title {
-            font-family: 'Syne', sans-serif;
-            font-size: clamp(1.3rem, 2vw, 1.8rem);
-            margin: 0;
-        }
-
-        .project-body {
-            padding: 1.5rem;
-        }
-
-        .project-description {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-            font-size: clamp(0.9rem, 1.5vw, 1rem);
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 4rem 1.5rem;
+            border-radius: 12px 12px 0 0;
+            margin: -2rem -2rem 1.5rem -2rem;
         }
 
         .contact-content {
@@ -485,8 +410,8 @@
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
-            margin-top: 2.5rem;
+            gap: 2rem;
+            margin-top: 3rem;
             flex-wrap: wrap;
         }
 
@@ -500,7 +425,6 @@
             justify-content: center;
             color: var(--text-primary);
             text-decoration: none;
-            font-size: 1.5rem;
             transition: all 0.3s ease;
         }
 
@@ -510,196 +434,197 @@
             transform: translateY(-4px);
         }
 
+        .social-link svg {
+            width: 24px;
+            height: 24px;
+        }
+
         .social-link img {
-            max-width: 32px;
+            width: 32px;
             height: auto;
         }
 
-        /* Footer */
         footer {
-            padding: 2rem 1.5rem;
+            padding: 2rem;
             text-align: center;
             color: var(--text-secondary);
             border-top: 1px solid var(--border-color);
-            font-size: clamp(0.85rem, 1.5vw, 1rem);
         }
 
-        /* Tablet Responsive */
-        @media (max-width: 1024px) {
-            .hero {
-                padding: 5rem 1.5rem 2rem;
-            }
-
-            .hero-content {
-                gap: 2.5rem;
-            }
-
-            nav .container {
-                padding: 0;
-            }
-        }
-
-        /* Mobile Responsive */
+        /* MOBILE RESPONSIVE */
         @media (max-width: 768px) {
             .menu-toggle {
-                display: flex;
+                display: flex !important;
             }
 
             .nav-links {
                 position: fixed;
-                top: 70px;
+                top: 75px;
                 left: -100%;
                 width: 100%;
+                height: calc(100vh - 75px);
                 background: rgba(10, 14, 23, 0.98);
+                backdrop-filter: blur(20px);
                 flex-direction: column;
-                align-items: flex-start;
-                padding: 2rem 1.5rem;
-                gap: 1.5rem;
-                transition: left 0.3s ease;
+                align-items: center;
+                justify-content: flex-start;
+                padding: 3rem 2rem;
+                gap: 2rem;
+                transition: left 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
                 border-bottom: 1px solid var(--border-color);
+                z-index: 999;
+                overflow-y: auto;
             }
 
             .nav-links.active {
                 left: 0;
             }
 
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+
             .nav-links a {
                 width: 100%;
-                font-size: 1.1rem;
+                font-size: 1.3rem;
+                padding: 1rem;
+                display: block;
+            }
+
+            nav .container {
+                padding: 0 1.5rem;
+            }
+
+            .logo {
+                font-size: 1rem;
             }
 
             .hero {
+                padding: 6rem 0 3rem;
                 min-height: auto;
-                padding: 5rem 1.5rem 3rem;
             }
 
             .hero-content {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 2.5rem;
             }
 
-            .terminal-window {
-                order: 2;
+            .hero-text h1 {
+                font-size: 2.5rem;
             }
 
-            .hero-text {
-                order: 1;
+            .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero-text p {
+                font-size: 1rem;
             }
 
             .cta-buttons {
                 flex-direction: column;
-                width: 100%;
             }
 
             .btn {
                 width: 100%;
+                text-align: center;
             }
 
-            .about,
-            .projects,
-            .certifications,
-            .contact {
-                padding: 3rem 1.5rem;
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .about, .projects, .certifications, .contact {
+                padding: 4rem 0;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
             }
 
             .section-subtitle {
-                margin-bottom: 2rem;
+                font-size: 1rem;
+                margin-bottom: 2.5rem;
             }
 
-            .skills-grid,
-            .projects-grid {
+            .skills-grid, .projects-grid {
+                grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
 
+            .terminal-body {
+                padding: 1.5rem;
+                font-size: 0.85rem;
+            }
+
             .social-links {
-                gap: 1rem;
+                gap: 1.2rem;
+            }
+
+            .social-link {
+                width: 55px;
+                height: 55px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 0.9rem;
+                letter-spacing: 1px;
+            }
+
+            .menu-toggle {
+                width: 40px;
+                height: 40px;
+                font-size: 1.3rem;
+            }
+
+            .hero {
+                padding: 5rem 0 2.5rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .hero-text p {
+                font-size: 0.95rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .section-subtitle {
+                font-size: 0.95rem;
+            }
+
+            .skill-card, .project-card {
+                padding: 1.5rem;
+            }
+
+            .terminal-body {
+                padding: 1.2rem;
+                font-size: 0.8rem;
             }
 
             .social-link {
                 width: 50px;
                 height: 50px;
             }
-        }
 
-        /* Extra Small Mobile */
-        @media (max-width: 480px) {
-            nav {
-                padding: 1rem;
-            }
-
-            .logo {
-                font-size: 1rem;
-                letter-spacing: 0.5px;
-            }
-
-            .menu-toggle {
-                width: 36px;
-                height: 36px;
-                font-size: 1.2rem;
-            }
-
-            .hero {
-                padding: 4.5rem 1rem 2rem;
-            }
-
-            .terminal-body {
-                padding: 1rem;
-            }
-
-            .terminal-header {
-                padding: 0.6rem 1rem;
-            }
-
-            .dot {
-                width: 10px;
-                height: 10px;
-            }
-
-            .about,
-            .projects,
-            .certifications,
-            .contact {
-                padding: 2.5rem 1rem;
-            }
-
-            .skill-card,
-            .project-body {
-                padding: 1.2rem;
-            }
-
-            .project-header {
-                padding: 1.2rem;
-                min-height: 120px;
-            }
-
-            .social-links {
-                gap: 0.8rem;
-            }
-
-            .social-link {
-                width: 48px;
-                height: 48px;
+            .social-link svg {
+                width: 20px;
+                height: 20px;
             }
 
             .social-link img {
-                max-width: 28px;
-            }
-
-            footer {
-                padding: 1.5rem 1rem;
-            }
-        }
-
-        /* Landscape Mobile */
-        @media (max-height: 600px) and (orientation: landscape) {
-            .hero {
-                min-height: auto;
-                padding: 5rem 1.5rem 2rem;
-            }
-
-            .terminal-body {
-                max-height: 300px;
-                overflow-y: auto;
+                width: 28px;
             }
         }
     </style>
@@ -711,13 +636,13 @@
         <nav>
             <div class="container">
                 <div class="logo">M. SHAFY KHAN</div>
-                <button class="menu-toggle" aria-label="Toggle menu">☰</button>
-                <ul class="nav-links">
-                    <li><a href="#home" class="active">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#certifications">Certifications</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#certifications" class="nav-link">Certifications</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
             </div>
         </nav>
@@ -842,49 +767,43 @@
                 <div class="projects-grid">
                     <div class="project-card">
                         <div class="project-header">
-                            <h3 class="project-title">📚 Learning Management System</h3>
+                            <h3>📚 Learning Management System</h3>
                         </div>
-                        <div class="project-body">
-                            <p class="project-description">
-                                Full LMS with student & teacher login, dashboards, course registration, announcements, file uploads, and fee records.
-                                Built using Flask, SQLite, HTML/CSS, and REST APIs.
-                            </p>
-                            <div class="skill-tags">
-                                <span class="tag">Flask</span>
-                                <span class="tag">Authentication</span>
-                                <span class="tag">Database</span>
-                            </div>
+                        <p class="project-description">
+                            Full LMS with student & teacher login, dashboards, course registration, announcements, file uploads, and fee records.
+                            Built using Flask, SQLite, HTML/CSS, and REST APIs.
+                        </p>
+                        <div class="skill-tags">
+                            <span class="tag">Flask</span>
+                            <span class="tag">Authentication</span>
+                            <span class="tag">Database</span>
                         </div>
                     </div>
 
                     <div class="project-card">
                         <div class="project-header">
-                            <h3 class="project-title">🏨 Hotel Management System</h3>
+                            <h3>🏨 Hotel Management System</h3>
                         </div>
-                        <div class="project-body">
-                            <p class="project-description">
-                                A Java-based Hotel Management System containing all core hotel operations including room reservations, guest management, check-in/check-out, and billing in a centralized application.
-                            </p>
-                            <div class="skill-tags">
-                                <span class="tag">Java</span>
-                                <span class="tag">Database</span>
-                            </div>
+                        <p class="project-description">
+                            A Java-based Hotel Management System containing all core hotel operations including room reservations, guest management, check-in/check-out, and billing in a centralized application.
+                        </p>
+                        <div class="skill-tags">
+                            <span class="tag">Java</span>
+                            <span class="tag">Database</span>
                         </div>
                     </div>
 
                     <div class="project-card">
                         <div class="project-header">
-                            <h3 class="project-title">🤖 Automation Scripts</h3>
+                            <h3>🤖 Automation Scripts</h3>
                         </div>
-                        <div class="project-body">
-                            <p class="project-description">
-                                Python scripts for workflow automation, data processing, and system tasks.
-                                Streamlining repetitive processes and improving efficiency.
-                            </p>
-                            <div class="skill-tags">
-                                <span class="tag">Python</span>
-                                <span class="tag">Automation</span>
-                            </div>
+                        <p class="project-description">
+                            Python scripts for workflow automation, data processing, and system tasks.
+                            Streamlining repetitive processes and improving efficiency.
+                        </p>
+                        <div class="skill-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Automation</span>
                         </div>
                     </div>
                 </div>
@@ -961,26 +880,23 @@
                     </p>
                     
                     <div class="social-links">
-                        <a href="https://github.com/muhammadshafykhanniazi-coder" class="social-link" title="GitHub">
-                            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <a href="https://github.com/muhammadshafykhanniazi-coder" class="social-link" title="GitHub" target="_blank">
+                            <svg fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                             </svg>
                         </a>
-                        <a href="https://www.linkedin.com/in/shafy-khan-/" class="social-link" title="LinkedIn">
-                            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <a href="https://www.linkedin.com/in/shafy-khan-/" class="social-link" title="LinkedIn" target="_blank">
+                            <svg fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                             </svg>
                         </a>
                         <a href="mailto:muhammadshafykhanniazi@gmail.com" class="social-link" title="Email">
-                            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <svg fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/>
                             </svg>
                         </a>
-                        <a href="https://tryhackme.com/p/muhammadshafykhanniazi" class="social-link" title="TryHackMe">
-                            <img 
-                                src="https://assets.tryhackme.com/img/logo/tryhackme_logo_full.svg" 
-                                alt="TryHackMe"
-                            >
+                        <a href="https://tryhackme.com/p/muhammadshafykhanniazi" class="social-link" title="TryHackMe" target="_blank">
+                            <img src="https://assets.tryhackme.com/img/logo/tryhackme_logo_full.svg" alt="TryHackMe">
                         </a>
                     </div>
                 </div>
@@ -995,30 +911,42 @@
     </div>
 
     <script>
-        // Mobile menu toggle
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
+        // Get elements
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const navLinkItems = document.querySelectorAll('.nav-link');
 
-        menuToggle.addEventListener('click', () => {
+        // Toggle menu
+        menuToggle.addEventListener('click', function() {
             navLinks.classList.toggle('active');
-            menuToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+            this.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
         });
 
         // Close menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
+        navLinkItems.forEach(link => {
+            link.addEventListener('click', function() {
                 navLinks.classList.remove('active');
                 menuToggle.textContent = '☰';
             });
         });
 
-        // Smooth scrolling for navigation links
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const isClickInside = navLinks.contains(event.target) || menuToggle.contains(event.target);
+            
+            if (!isClickInside && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                menuToggle.textContent = '☰';
+            }
+        });
+
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    const offset = 80;
+                    const offset = 75;
                     const targetPosition = target.offsetTop - offset;
                     window.scrollTo({
                         top: targetPosition,
@@ -1041,34 +969,12 @@
                 }
             });
 
-            document.querySelectorAll('.nav-links a').forEach(link => {
+            navLinkItems.forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('href') === `#${current}`) {
                     link.classList.add('active');
                 }
             });
-        });
-
-        // Add animation on scroll for cards
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.skill-card, .project-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'all 0.6s ease-out';
-            observer.observe(card);
         });
     </script>
 </body>
